@@ -5,31 +5,63 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salário dos funcionarios</title>
+    <style>
+        body {
+            background-color: pink;
+        }
+
+        main {
+            background-color: white;
+            width: 500px;
+            padding: 15px;
+            border-radius: 15px;
+            display: block;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <main>
-        <h1>Controle de salário de funcionarios</h1>
-        <form action="roi.php" method="get" onsubmit="return calc()">
-            <label for="num">Quantos funcionarios serão cadastrados</label>
+        <h1>Controle salarial de funcionários</h1>
+        <form action="sweet.php" method="get" onsubmit="return calc()">
+            <label for="num">Quantos funcionários serão cadastrados?</label>
             <input type="number" name="num" id="num">
             <input type="submit" value="iniciar">
 
         </form>
+        <p id="Result"></p>
     </main>
     <script>
         function calc() {
             let num = Number(document.getElementById("num").value)
-            let contagen = 1 
-            let sau = 0
+            let res = document.getElementById("Result")
+            let contagem = 1 
+            let sal = 0
             let tot = 0
             let mai = 0
             let men= 0 
-            while (contagen <= num) {
-                sau = prompt("Qual e o salario do funcionario")
-                tot += sau 
+            while (contagem <= num) {
+                sal = Number(prompt("Qual é o salario do funcionário?"))
+                tot += sal 
+                if (contagem == 1) {
+                    mai = sal
+                    men = sal
                 }
-                contagen++
+                else if (sal > mai){
+                    mai = sal
+                }
+                else if (sal < men){
+                    men = sal
+                }
+            
+                contagem++
             }
+            res.innerHTML = `A empresa terá que pagar R$${tot}.<br>
+            A média salarial é de R$${tot / num}.<br>
+            O maior salário é de R$${mai}.<br>
+            O menor salário é de R$${men}.`
+            return false
         }
     </script>
 </body>
