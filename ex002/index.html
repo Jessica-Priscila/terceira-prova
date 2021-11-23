@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salário dos funcionarios</title>
+</head>
+<body>
+    <main>
+        <h1>Controle de salário de funcionarios</h1>
+        <form action="roi.php" method="get" onsubmit="return calc()">
+            <label for="num">Quantos funcionarios serão cadastrados</label>
+            <input type="number" name="num" id="num">
+            <input type="submit" value="iniciar">
+
+        </form>
+    </main>
+    <script>
+        function calc() {
+            let num = Number(document.getElementById("num").value)
+            let contagen = 1 
+            let sau = 0
+            let tot = 0
+            let mai = 0
+            let men= 0 
+            while (contagen <= num) {
+                sau = prompt("Qual e o salario do funcionario")
+                tot += sau 
+                }
+                contagen++
+            }
+        }
+    </script>
+</body>
+</html>
