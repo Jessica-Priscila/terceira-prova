@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fnanciamento de carros</title>
+    <style>body {
+        background-image: linear-gradient(#F29985, #F2BBA7);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: top center;
+        background-attachment: fixed;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    main{
+        text-align: center;
+        background-color: white;
+        border-radius: 10px;
+        display: block;
+        margin-left: 300px;
+        margin-right: 300px;
+        padding: 6px;
+    }
+    div{
+        background-color: rgb(138, 172, 216);
+    }
+    button {
+        font-family: 'Courier New', Courier, monospace;
+        background-color: violet;
+    }
+</style>
+</head>
+<body>
+    <main>
+        <section>
+            <h1>Financie seu carro</h1>
+            <form action="salvar.php" method="get" onsubmit="return financiar()">
+            <label for="mod">Modelo do carro</label> 
+            <input type="text" name="mod" id="mod"> <br>
+            <label for="pre">Qual é o preço do carro?</label>
+            <input type="number" name="pre" id="pre" min="100" max="2000000"> <br>
+            <label for="par">Qual é o numero de parcelas?</label>
+            <input type="number" name="par" id="par" min="2" max="36">
+            <input type="submit" value="Financiar">
+            <p id="res"></p>
+            </form>
+        </section>
+    </main>
+    <script>
+        let res = document.getElementById("res")
+        function financiar() {
+            let mod = document.getElementById("mod").value
+            let pre = Number(document.getElementById("pre").value)
+            let par = Number(document.getElementById("par").value)
+
+            if (par <= 4) {
+                let vpar = pre / par
+                res.innerHTML = `O carro ${mod} custará ${pre} e cada parcela será ${vpar}`
+            }  if (par >=5) {
+                let pre0 = pre + (25/100 * pre)
+                let vpar = pre0 / par
+                res.innerHTML = `O carro ${mod} custará ${pre0} e cada parcela será ${vpar}`
+            } if (par >=13) {
+                let pre0 = pre + (60/100 * pre)
+                let vpar = pre0 / par
+                res.innerHTML = `O carro ${mod} custará ${pre0} e cada parcela será ${vpar}`
+            } if (par >=25) {
+                let pre0 = pre + (80/100 * pre)
+                let vpar = pre0 / par
+                res.innerHTML = `O carro ${mod} custará ${pre0} e cada parcela será ${vpar}`
+            }
+            return false
+        }
+
+    </script>
+</body>
+</html>
